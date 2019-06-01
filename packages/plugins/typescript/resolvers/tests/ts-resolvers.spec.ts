@@ -252,7 +252,7 @@ describe('TypeScript Resolvers Plugin', () => {
 
     expect(result.content).toBeSimilarStringTo(`
       export type SubscriptionResolvers<ContextType = any, ParentType = ResolversTypes['Subscription']> = {
-        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, ParentType, ContextType>,
+        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, "somethingChanged", ParentType, ContextType>,
       };
     `);
 
@@ -311,7 +311,7 @@ describe('TypeScript Resolvers Plugin', () => {
 
     expect(result.content).toBeSimilarStringTo(`
       export type SubscriptionResolvers<ContextType = any, ParentType = ResolversTypes['Subscription']> = {
-        somethingChanged: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, ParentType, ContextType>,
+        somethingChanged: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, "somethingChanged", ParentType, ContextType>,
       };
     `);
 
@@ -373,7 +373,7 @@ describe('TypeScript Resolvers Plugin', () => {
 
     expect(result.content).toBeSimilarStringTo(`
       export type SubscriptionResolvers<ContextType = MyCustomCtx, ParentType = ResolversTypes['Subscription']> = {
-        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, ParentType, ContextType>,
+        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, "somethingChanged", ParentType, ContextType>,
       };
     `);
 
@@ -437,7 +437,7 @@ describe('TypeScript Resolvers Plugin', () => {
 
     expect(result.content).toBeSimilarStringTo(`
       export type SubscriptionResolvers<ContextType = MyCustomCtx, ParentType = ResolversTypes['Subscription']> = {
-        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, ParentType, ContextType>,
+        somethingChanged?: SubscriptionResolver<Maybe<ResolversTypes['MyOtherType']>, "somethingChanged", ParentType, ContextType>,
       };
     `);
 
