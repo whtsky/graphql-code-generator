@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:12.4.0
+        environment:
+          GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
     steps:
       - checkout
       - restore_cache:
