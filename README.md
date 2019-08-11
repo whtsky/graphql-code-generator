@@ -12,7 +12,7 @@
 [graphql-code-generator.com](https://graphql-code-generator.com)
 
 <p align="center">
-    <img src="https://github.com/dotansimha/graphql-code-generator/blob/master/logo.png?raw=true" />
+    <img width="100%" border="1" border-color="black" src="https://github.com/dotansimha/graphql-code-generator/blob/master/logo.png?raw=true" />
 </p>
 
 [GraphQL Codegen 1.0 is here!](https://graphql-code-generator.com/docs/migration/from-0-18)
