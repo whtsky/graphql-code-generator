@@ -1381,4 +1381,45 @@ describe('TypeScript Resolvers Plugin', () => {
     `);
     }).not.toThrow();
   });
+
+  it('issue #2194', async () => {
+    const testSchema = buildSchema(/* GraphQL */ `
+      interface Animal {
+        color: String!
+      }
+
+      type Dog implements Animal {
+        color: String!
+        bark: String!
+      }
+
+      type Cat implements Animal {
+        color: String!
+        meow: String!
+      }
+    `);
+
+    const code = /* TypeScript */ `
+      const resolvers: Resolvers = {
+        Cat: {
+          color: e => e.color,
+          meow: e => e.noise,
+        },
+        Dog: {
+          color: e => e.color,
+          bark: e => e.noise,
+        },
+        Animal: {
+          __resolveType: e => (e.dog ? "Dog" : "Cat")
+          // Property 'color' is missing in type '{ __resolveType: () => "Cat"; }' but required in type 'AnimalResolvers<any, Animal>'
+        },
+      };
+    `;
+
+    const tsContent = await tsPlugin(testSchema, [], {}, { outputFile: 'graphql.ts' });
+    const resolversContent = (await plugin(testSchema, [], {}, { outputFile: 'graphql.ts' })) as Types.ComplexPluginOutput;
+    const content = mergeOutputs([tsContent, resolversContent, code]);
+
+    validateTs(content, undefined, false, true);
+  });
 });
