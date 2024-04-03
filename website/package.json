@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/config-markdown-generator": "1.7.0",
-    "babel-preset-minify": "0.5.1",
+    "babel-preset-minify": "0.5.2",
     "docusaurus": "1.12.0",
     "remarkable-embed": "0.4.1"
   }
